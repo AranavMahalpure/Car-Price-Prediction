@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Price Prediction</title>
+</head>
+<!-- bootstrap Css CDN -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<!-- Bootstrap Javascript CDN -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+<!-- Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+    .card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  margin: 1rem;
+}
+</style>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/"><i class="fa-solid fa-car"></i>Car Price Prediction</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/visual">  Model Visualization </a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </nav>
+      
+      <div class="card-container">
+        <div class="card" style="width: 18rem;">
+          <img src="static/boxplotbefore.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <p class="card-text">Boxplot for dataset before Outlier Handling</p>
+          </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+          <img src="static/boxplotafter.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <p class="card-text">Boxplot for dataset after Outlier Handling</p>
+          </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+          <img src="static/reportafter.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <p class="card-text">Report After Data preprocessing</p>
+          </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+          <img src="static/distributionofcarbybodytype.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <p class="card-text">Distribution of Car By Body Type</p>
+          </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+          <img src="static/distributionofcarbybrands.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <p class="card-text">Distribution Of Car by Brands</p>
+          </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+          <img src="static/distributionofprice.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <p class="card-text">Distribution Of Price</p>
+          </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+          <img src="static/scattermatrix.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <p class="card-text">Scatter Matrix For Finding Correlation</p>
+          </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+          <img src="static/scattermatrixkillometervsprice.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <p class="card-text">Scatter Matrix Specific For Kilometer vs Price</p>
+          </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+            <img src="static\residual plot.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <p class="card-text">Residual Plot</p>
+            </div>
+          </div>
+          <div class="card" style="width: 18rem;">
+            <img src="static\actual vs predicted.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <p class="card-text">Actual Vs Predicted Price</p>
+            </div>
+          </div>
+      </div> <!-- Closing .card-container -->
+</body>
+<script>
+    // Get all the images with the class name 'card-img-top'
+    var images = document.querySelectorAll('.card-img-top');
+
+    // Loop through each image and add a click event listener
+    images.forEach(function(image) {
+        image.addEventListener('click', function() {
+            // Create an overlay element
+            var overlay = document.createElement('div');
+            overlay.id = 'overlay';
+            overlay.style.position = 'fixed';
+            overlay.style.top = '0';
+            overlay.style.left = '0';
+            overlay.style.width = '100%';
+            overlay.style.height = '100%';
+            overlay.style.background = 'rgba(0, 0, 0, 0.7)';
+            overlay.style.zIndex = '9999';
+
+            // Create an image element and set its source to the clicked image
+            var img = document.createElement('img');
+            img.src = this.src;
+            img.style.maxWidth = '80%';
+            img.style.maxHeight = '80%';
+            img.style.position = 'absolute';
+            img.style.top = '50%';
+            img.style.left = '50%';
+            img.style.transform = 'translate(-50%, -50%)';
+
+            // Add the image to the overlay and append the overlay to the body
+            overlay.appendChild(img);
+            document.body.appendChild(overlay);
+
+            // Add a click event listener to the overlay to close it
+            overlay.addEventListener('click', function() {
+                document.body.removeChild(overlay);
+            });
+        });
+    });
+</script>
+</html
